@@ -71,6 +71,11 @@ section:not(:first-of-type)::before {
   box-sizing: border-box;
 }
 
+/* Hide default cursor — custom cursor is used instead */
+*, *::before, *::after {
+  cursor: none !important;
+}
+
 body {
   overflow-x: hidden;
 }

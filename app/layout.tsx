@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
+import CustomCursor from "./components/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -51,14 +52,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} style={{ cursor: "none" }}>
       <head>
         <meta
           name="google-site-verification"
           content="sVGevsvKctYo7M-XNJrk1OsSU6X-fxAHHINA57hwK-o"
         />
       </head>
-      <body className="min-h-full bg-[#05070b] text-white">
+      <body className="min-h-full bg-[#05070b] text-white" style={{ cursor: "none" }}>
+        <CustomCursor />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NP5NGB3W"
