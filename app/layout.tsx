@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shahaf-portfolio.vercel.app"),
+  metadataBase: new URL("https://shahafstudio.vercel.app"),
   title: "שחף עמרם | שחף ערמם | Shahaf Amram | Web Developer",
   description:
     "Portfolio of Shahaf Amram, a 14-year-old web developer, bot developer, and software developer from Israel.",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "Shahaf Amram | Developer, Builder, Founder",
     description: "Premium portfolio for Shahaf Amram.",
     type: "website",
-    url: "https://shahaf-portfolio.vercel.app",
+    url: "https://shahafstudio.vercel.app",
     siteName: "Shahaf Amram",
   },
   twitter: {
