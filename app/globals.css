@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+:root {
+  --background: #05070b;
+  --foreground: #f5f7fb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    linear-gradient(rgba(168, 185, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 185, 255, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at top, rgba(125, 211, 252, 0.12), transparent 24%),
+    radial-gradient(circle at bottom right, rgba(110, 231, 183, 0.08), transparent 24%),
+    #05070b;
+  background-size: 72px 72px, 72px 72px, auto, auto, auto;
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08), transparent 28%);
+  mask-image: linear-gradient(to bottom, black, transparent 75%);
+}
+
+section {
+  position: relative;
+}
+
+section:not(:first-of-type)::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(72%, 860px);
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(125, 211, 252, 0.18), transparent);
+  transform: translateX(-50%);
+}
+
+[style*="--theme-accent"] [class*="text-cyan-"] {
+  color: var(--theme-accent) !important;
+}
+
+[style*="--theme-accent"] [class*="border-cyan-"] {
+  border-color: color-mix(in srgb, var(--theme-accent) 38%, transparent) !important;
+}
+
+[style*="--theme-accent"] [class*="bg-cyan-"] {
+  background-color: var(--theme-accent-soft) !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  section {
+    scroll-margin-top: 76px;
+  }
+
+  input,
+  textarea,
+  select,
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+::selection {
+  background: rgba(125, 211, 252, 0.35);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
