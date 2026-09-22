@@ -54,7 +54,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`} style={{ cursor: "none" }}>
       <body className="min-h-full bg-[#05070b] text-white" style={{ cursor: "none" }}>
-        <CustomCursor />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NP5NGB3W"
@@ -64,6 +63,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             title="Google Tag Manager"
           />
         </noscript>
+        <CustomCursor />
         {children}
         <Script id="google-tag-manager" strategy="beforeInteractive">
           {`

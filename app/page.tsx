@@ -30,7 +30,7 @@ type ChatMessage = {
   text: string;
 };
 
-type ThemeKey = "obsidian" | "graphite" | "verdant" | "emerald" | "bronze" | "midnight" | "silver" | "sapphire";
+type ThemeKey = "obsidian" | "graphite" | "verdant" | "emerald" | "bronze" | "midnight" | "silver" | "sapphire" | "rose" | "aurora" | "amber" | "ocean";
 
 type ProjectDetail = {
   name: string;
@@ -40,6 +40,9 @@ type ProjectDetail = {
   role?: string;
   stack?: string;
   outcome?: string;
+  image?: string;
+  challenge?: string;
+  tags?: string[];
 };
 
 const createMessage = (role: ChatMessage["role"], text: string): ChatMessage => ({
@@ -136,10 +139,12 @@ const translations = {
       project03: "03 — LeviBot",
       project04: "04 — Vexra Group",
       project05: "05 — AeroGrowth",
+      project06: "06 — צוות סקודה",
       clientDesc: "Client website and branding work built for a polished digital presence.",
       leviDesc: "Lead developer behind LeviBot",
       vexraDesc: "Brand and web showcase",
       aeroDesc: "Founder-facing community landing page",
+      skodaDesc: "Co-founded community and launch-focused Discord ecosystem for a growing group of members.",
     },
     founders: {
       title: "Founded & Co-Founded",
@@ -147,11 +152,14 @@ const translations = {
       founder: "Founder",
       memberlyx: "Memberlyx",
       cofounder: "Co-Founder",
+      skoda: "צוות סקודה",
       join: "Join AeroGrowth →",
       join2: "Join Memberlyx →",
+      join3: "Join צוות סקודה →",
       guns: "Open Guns.lol →",
       members: "~517 Members",
       members2: "~1,440 Members",
+      members3: "606 members",
     },
     journey: {
       title: "Experience / Journey",
@@ -178,6 +186,10 @@ const translations = {
       discord: "Discord",
       copy: "Copy Discord Username",
       copied: "Copied!",
+      contactLine: "Replies go directly to Shahaf.",
+      githubAction: "Open GitHub",
+      phoneAction: "Call now",
+      discordAction: "Open Discord",
       formName: "Name",
       formEmail: "Email",
       formType: "Project Type",
@@ -304,10 +316,12 @@ const translations = {
       project03: "03 — LeviBot",
       project04: "04 — Vexra Group",
       project05: "05 — AeroGrowth",
+      project06: "06 — צוות סקודה",
       clientDesc: "אתר לקוח ועיצוב מותג שנבנו לנוכחות דיגיטלית מלוטשת.",
       leviDesc: "מפתח ראשי מאחורי LeviBot",
       vexraDesc: "תצוגת מותג ואתר",
       aeroDesc: "דף נחיתה לקהילה שמיועד למייסד",
+      skodaDesc: "הקמתי שותפות קהילתית וקהילה מבוססת Discord עם מיקוד על צמיחה ואינטראקציה.",
     },
     founders: {
       title: "הקמה ושותפות",
@@ -315,11 +329,14 @@ const translations = {
       founder: "מייסד",
       memberlyx: "Memberlyx",
       cofounder: "שותף מייסד",
+      skoda: "צוות סקודה",
       join: "הצטרף ל-AeroGrowth →",
       join2: "הצטרף ל-Memberlyx →",
+      join3: "הצטרף לצוות סקודה →",
       guns: "פתח את Guns.lol →",
       members: "כ־517 חברים",
       members2: "כ־1,440 חברים",
+      members3: "606 חברים",
     },
     journey: {
       title: "מסע והתנסות",
@@ -346,6 +363,10 @@ const translations = {
       discord: "Discord",
       copy: "העתק שם משתמש דיסקורד",
       copied: "הועתק!",
+      contactLine: "ההודעות נשלחות ישירות לשחף.",
+      githubAction: "פתח GitHub",
+      phoneAction: "התקשר עכשיו",
+      discordAction: "פתח Discord",
       formName: "שם",
       formEmail: "אימייל",
       formType: "סוג הפרויקט",
@@ -471,10 +492,12 @@ const translations = {
       project03: "03 — LeviBot",
       project04: "04 — Vexra Group",
       project05: "05 — AeroGrowth",
+      project06: "06 — צוות סקודה",
       clientDesc: "Site client et travail de branding créé pour une présence digitale soignée.",
       leviDesc: "Lead developer derrière LeviBot",
       vexraDesc: "Branding et vitrine web",
       aeroDesc: "Landing page communautaire orientée fondateur",
+      skodaDesc: "Co-fondateur d’une communauté Discord orientée croissance, membres et lancement de projets.",
     },
     founders: {
       title: "Fondations & co-fondations",
@@ -482,11 +505,14 @@ const translations = {
       founder: "Fondateur",
       memberlyx: "Memberlyx",
       cofounder: "Co-Fondateur",
+      skoda: "Équipe Skoda",
       join: "Rejoindre AeroGrowth →",
       join2: "Rejoindre Memberlyx →",
+      join3: "Rejoindre l’équipe Skoda →",
       guns: "Ouvrir Guns.lol →",
       members: "~517 membres",
       members2: "~1 440 membres",
+      members3: "606 membres",
     },
     journey: {
       title: "Parcours",
@@ -513,6 +539,10 @@ const translations = {
       discord: "Discord",
       copy: "Copier le pseudo Discord",
       copied: "Copié !",
+      contactLine: "Les réponses arrivent directement à Shahaf.",
+      githubAction: "Ouvrir GitHub",
+      phoneAction: "Appeler maintenant",
+      discordAction: "Ouvrir Discord",
       formName: "Nom",
       formEmail: "E-mail",
       formType: "Type de projet",
@@ -559,7 +589,7 @@ const translations = {
 
 const numbers = [
   { value: "5+", label: "Featured Projects" },
-  { value: "1,900+", label: "Combined Community Members" },
+  { value: "2,563+", label: "Combined Community Members" },
   { value: "3", label: "Development Specialties" },
   { value: "7", label: "Age Development Journey Started" },
   { value: "14", label: "Current Age" },
@@ -583,7 +613,7 @@ export default function Home() {
   const [submitted, setSubmitted] = useState(false);
   const [submissionError, setSubmissionError] = useState(false);
   const [submitting, setSubmitting] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", type: "Website", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", type: "Website", budget: "", deadline: "", message: "" });
   const chatScrollRef = useRef<HTMLDivElement>(null);
   const [rating, setRating] = useState(0);
   const [ratingHover, setRatingHover] = useState(0);
@@ -684,6 +714,50 @@ export default function Home() {
       border: "rgba(255,255,255,0.10)",
       button: "linear-gradient(135deg, rgba(125,211,252,0.15), rgba(7,13,26,0.9))",
     },
+    rose: {
+      background: "#120b12",
+      surface: "#1d111e",
+      surfaceAlt: "#2a1729",
+      accent: "#f3b4d0",
+      accentSoft: "rgba(243, 180, 208, 0.14)",
+      text: "#fff3f8",
+      muted: "rgba(255,243,248,0.72)",
+      border: "rgba(255,255,255,0.10)",
+      button: "linear-gradient(135deg, rgba(243,180,208,0.14), rgba(18,11,18,0.9))",
+    },
+    aurora: {
+      background: "#071512",
+      surface: "#0f221d",
+      surfaceAlt: "#17372f",
+      accent: "#8ef0d2",
+      accentSoft: "rgba(142, 240, 210, 0.14)",
+      text: "#f0fff8",
+      muted: "rgba(240,255,248,0.72)",
+      border: "rgba(255,255,255,0.10)",
+      button: "linear-gradient(135deg, rgba(142,240,210,0.14), rgba(7,21,18,0.9))",
+    },
+    amber: {
+      background: "#120d08",
+      surface: "#1d170e",
+      surfaceAlt: "#2b1f10",
+      accent: "#f4c98b",
+      accentSoft: "rgba(244, 201, 139, 0.14)",
+      text: "#fff7eb",
+      muted: "rgba(255,247,235,0.72)",
+      border: "rgba(255,255,255,0.10)",
+      button: "linear-gradient(135deg, rgba(244,201,139,0.16), rgba(18,13,8,0.9))",
+    },
+    ocean: {
+      background: "#06121b",
+      surface: "#0d1f2b",
+      surfaceAlt: "#143448",
+      accent: "#87d7ff",
+      accentSoft: "rgba(135, 215, 255, 0.14)",
+      text: "#edfaff",
+      muted: "rgba(237,250,255,0.72)",
+      border: "rgba(255,255,255,0.10)",
+      button: "linear-gradient(135deg, rgba(135,215,255,0.14), rgba(6,18,27,0.9))",
+    },
   } as const;
   const activeTheme = themePalette[theme];
   const themeOptions = [
@@ -695,6 +769,10 @@ export default function Home() {
     { id: "midnight", label: "Midnight", dot: "#a5c8ff" },
     { id: "silver", label: "Silver", dot: "#dfe6ed" },
     { id: "sapphire", label: "Sapphire", dot: "#7dd3fc" },
+    { id: "rose", label: "Rose", dot: "#f3b4d0" },
+    { id: "aurora", label: "Aurora", dot: "#8ef0d2" },
+    { id: "amber", label: "Amber", dot: "#f4c98b" },
+    { id: "ocean", label: "Ocean", dot: "#87d7ff" },
   ] as const;
 
   useEffect(() => {
@@ -832,7 +910,7 @@ export default function Home() {
           name: form.name,
           email: form.email,
           projectType: form.type,
-          message: form.message,
+          message: `${form.message}\n\nBudget: ${form.budget || "Not specified"}\nTimeline: ${form.deadline || "Not specified"}`,
         }),
       });
       notificationSucceeded = response.ok;
@@ -843,7 +921,7 @@ export default function Home() {
     setSubmitted(notificationSucceeded);
     setSubmissionError(!notificationSucceeded);
     if (notificationSucceeded) {
-      setForm({ name: "", email: "", type: "Website", message: "" });
+      setForm({ name: "", email: "", type: "Website", budget: "", deadline: "", message: "" });
     }
     setSubmitting(false);
     setTimeout(() => setSubmitted(false), 2000);
@@ -931,6 +1009,51 @@ export default function Home() {
 
     return { ...item, label: translatedLabel };
   });
+
+  const featureCopy = lang === "he"
+    ? {
+        availability: "זמין לפרויקט הבא",
+        availabilityText: "בונה אתרים, מערכות Discord וכלי תוכנה עם תקשורת ישירה ותהליך ברור.",
+        skillsTitle: "הכלים שמאחורי העבודה",
+        skillsText: "טכנולוגיות וכלים שאני משתמש בהם כדי להפוך רעיון למוצר עובד.",
+        caseTitle: "איך רעיונות הופכים למוצרים",
+        caseText: "כמה דוגמאות קצרות לאופן שבו אני חושב, בונה ומשפר מערכות אמיתיות.",
+        updatesTitle: "בבנייה עכשיו",
+        updatesText: "פרויקטים וקהילות שמתפתחים בזמן אמת.",
+        budget: "תקציב משוער",
+        deadline: "מועד יעד",
+        budgetOptions: ["עד 1,000 ש״ח", "1,000–3,000 ש״ח", "3,000+ ש״ח", "עדיין לא בטוח"],
+        deadlineOptions: ["השבוע", "בחודש הקרוב", "אין דדליין", "עדיין לא בטוח"],
+      }
+    : lang === "fr"
+      ? {
+          availability: "Disponible pour le prochain projet",
+          availabilityText: "Sites web, systèmes Discord et outils logiciels avec une communication directe et un processus clair.",
+          skillsTitle: "Les outils derrière le travail",
+          skillsText: "Les technologies que j’utilise pour transformer une idée en produit fonctionnel.",
+          caseTitle: "Des idées aux produits",
+          caseText: "Quelques exemples de ma façon de réfléchir, construire et améliorer des systèmes réels.",
+          updatesTitle: "En construction",
+          updatesText: "Des projets et communautés qui évoluent en temps réel.",
+          budget: "Budget estimé",
+          deadline: "Délai souhaité",
+          budgetOptions: ["Moins de 1 000 ₪", "1 000–3 000 ₪", "3 000+ ₪", "Pas encore sûr"],
+          deadlineOptions: ["Cette semaine", "Ce mois-ci", "Pas de délai", "Pas encore sûr"],
+        }
+      : {
+          availability: "Available for the next build",
+          availabilityText: "Websites, Discord systems, and software tools with direct communication and a clear process.",
+          skillsTitle: "The tools behind the work",
+          skillsText: "Technologies I use to turn an idea into a working product.",
+          caseTitle: "From ideas to products",
+          caseText: "A few quick examples of how I think, build, and improve real systems.",
+          updatesTitle: "Building now",
+          updatesText: "Projects and communities evolving in real time.",
+          budget: "Estimated budget",
+          deadline: "Target timeline",
+          budgetOptions: ["Under ₪1,000", "₪1,000–3,000", "₪3,000+", "Not sure yet"],
+          deadlineOptions: ["This week", "This month", "No deadline", "Not sure yet"],
+        };
 
   if (!mounted) return null;
 
@@ -1511,6 +1634,53 @@ export default function Home() {
         </section>
 
         <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+          <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
+            <motion.div initial={{ opacity: 0, x: -18 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.3 }} className="rounded-[2rem] border border-emerald-300/20 bg-[linear-gradient(145deg,rgba(16,44,37,0.8),rgba(8,14,18,0.94))] p-6 shadow-[0_20px_55px_rgba(16,185,129,0.08)] sm:p-8">
+              <div className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.25em] text-emerald-200"><span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300 shadow-[0_0_14px_rgba(110,231,183,0.8)]" /> {featureCopy.availability}</div>
+              <p className="mt-5 text-xl leading-8 text-white/80">{featureCopy.availabilityText}</p>
+              <a href="#contact" className="mt-7 inline-flex items-center gap-2 rounded-full bg-emerald-200 px-5 py-3 text-sm font-semibold text-[#06130e] transition hover:-translate-y-1">Start a project <ArrowRight className="h-4 w-4" /></a>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, x: 18 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true, amount: 0.3 }} className="rounded-[2rem] border border-white/10 bg-white/[0.03] p-6 sm:p-8">
+              <h2 className="text-3xl font-black tracking-[-0.05em] text-white sm:text-4xl">{featureCopy.skillsTitle}</h2>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-white/55">{featureCopy.skillsText}</p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                {["Next.js", "React", "TypeScript", "Tailwind CSS", "Node.js", "Python", "Discord.js", "REST APIs", "Automation", "GitHub"].map((skill, index) => (
+                  <span key={skill} className={`rounded-full border px-3 py-2 text-xs font-medium ${index % 3 === 0 ? "border-cyan-300/25 bg-cyan-300/10 text-cyan-100" : index % 3 === 1 ? "border-violet-300/20 bg-violet-300/10 text-violet-100" : "border-white/10 bg-white/[0.04] text-white/70"}`}>{skill}</span>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="mt-6 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} className="rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),rgba(9,14,21,0.9))] p-6 sm:p-8">
+              <div className="text-[10px] uppercase tracking-[0.25em] text-cyan-300">{featureCopy.caseTitle}</div>
+              <p className="mt-3 max-w-xl text-sm leading-6 text-white/55">{featureCopy.caseText}</p>
+              <div className="mt-7 grid gap-3 sm:grid-cols-3">
+                {[{ name: "AeroGrowth", role: "Founder", result: "517+ members" }, { name: "LeviBot", role: "Lead Developer", result: "Bot + web system" }, { name: "צוות סקודה", role: "Co-Founder", result: "606 members" }].map((item, index) => (
+                  <div key={item.name} className="rounded-2xl border border-white/10 bg-black/15 p-4">
+                    <div className="font-mono text-[10px] text-cyan-300/70">0{index + 1}</div>
+                    <div className="mt-4 font-semibold text-white">{item.name}</div>
+                    <div className="mt-2 text-xs text-white/50">{item.role}</div>
+                    <div className="mt-4 text-xs font-medium text-emerald-200">{item.result}</div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.35 }} className="rounded-[2rem] border border-amber-300/15 bg-[linear-gradient(145deg,rgba(67,47,20,0.55),rgba(13,13,14,0.94))] p-6 sm:p-8">
+              <div className="text-[10px] uppercase tracking-[0.25em] text-amber-200">{featureCopy.updatesTitle}</div>
+              <p className="mt-3 text-sm leading-6 text-white/60">{featureCopy.updatesText}</p>
+              <div className="mt-7 space-y-4">
+                {[{ label: "צוות סקודה", value: "606 members", color: "bg-emerald-300" }, { label: "AeroGrowth", value: "517 members", color: "bg-cyan-300" }, { label: "Memberlyx", value: "1,440 members", color: "bg-violet-300" }].map((item) => (
+                  <div key={item.label} className="flex items-center justify-between gap-4 border-b border-white/10 pb-4 last:border-0 last:pb-0"><span className="flex items-center gap-2 text-sm text-white/80"><span className={`h-2 w-2 rounded-full ${item.color}`} />{item.label}</span><span className="text-xs text-white/50">{item.value}</span></div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
             <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }} className="overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(12,18,25,1),rgba(15,23,42,0.88))] p-6 shadow-[0_22px_60px_rgba(0,0,0,0.22)] sm:p-8">
               <div className="flex items-center gap-3 text-[10px] font-medium uppercase tracking-[0.25em] text-cyan-300">
@@ -1580,7 +1750,7 @@ export default function Home() {
               <div className="mb-5 flex items-center gap-3 text-sm text-white/60"><span className="h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.8)]" />{t.projects.builtTogether}</div>
               <div className="grid gap-6">
                 {[{ name: t.projects.project01, href: "https://www.gagot-hazoharim.co.il/", image: "https://images.unsplash.com/photo-1503387762-59252b7c9c2a?auto=format&fit=crop&w=1200&q=85" }, { name: t.projects.project02, href: "https://www.alumi-zohar.co.il/", image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=85" }].map((project, index) => (
-                  <motion.article key={project.name} onClick={() => setSelectedProject({ name: project.name, desc: t.projects.clientDesc, href: project.href, category: "client", role: "Web & brand development", stack: "Next.js · Responsive UI", outcome: "A clearer, more polished digital presence for the client." })} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ y: -8, scale: 1.01 }} viewport={{ once: true }} transition={{ duration: 0.45 }} className="group cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 bg-[#0b111a] shadow-[0_20px_60px_rgba(0,0,0,0.22)]">
+                  <motion.article key={project.name} onClick={() => setSelectedProject({ name: project.name, desc: t.projects.clientDesc, href: project.href, category: "client", role: "Web & brand development", stack: "Next.js · Responsive UI", outcome: "A clearer, more polished digital presence for the client.", challenge: "Turn a service business into a digital presence that feels credible, clear, and easy to contact.", tags: ["Brand direction", "Responsive UI", "Launch-ready"] })} initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ y: -8, scale: 1.01 }} viewport={{ once: true }} transition={{ duration: 0.45 }} className="group cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 bg-[#0b111a] shadow-[0_20px_60px_rgba(0,0,0,0.22)]">
                     <div className="grid gap-6 p-4 md:grid-cols-[1.2fr_0.8fr] md:p-6">
                       <div className="rounded-[1.5rem] border border-white/10 bg-[linear-gradient(135deg,#111827,#0f172a_45%,#0b1120)] p-4">
                         <div className="mb-4 flex items-center gap-2">
@@ -1626,8 +1796,13 @@ export default function Home() {
             <div className={projectFilter === "client" ? "hidden" : ""}>
               <h3 className="mb-6 text-xl font-semibold text-white/90">{t.projects.personal}</h3>
               <div className="grid gap-6 lg:grid-cols-2">
-                {[{ name: t.projects.project03, desc: t.projects.leviDesc, href: "https://levibot-nine.vercel.app/", image: "/8263689cdc32cef0e9b071fbd700e6ef.png", community: "https://discord.gg/6fv7vpUR7h", cta1: t.projects.view, cta2: t.projects.join }, { name: t.projects.project04, desc: t.projects.vexraDesc, href: "https://vexragroup.netlify.app/", visual: "console", cta1: t.projects.view }, { name: t.projects.project05, desc: t.projects.aeroDesc, href: "https://shahcaf.github.io/Aerogrowth/", image: "/de23298bfa67ec1092d4df3cec2c9bd1.png", community: "https://discord.gg/T8e8u28cZp", cta1: t.projects.view }].map((project) => (
-                  <motion.article key={project.name} onClick={() => setSelectedProject({ name: project.name, desc: project.desc, href: project.href, category: "personal", role: project.name.includes("LeviBot") ? "Lead Developer" : project.name.includes("AeroGrowth") ? "Founder & Product Builder" : "Product & web development", stack: project.name.includes("LeviBot") ? "Discord · Automation · Web" : "Brand · Web · Community systems", outcome: "A focused product experience designed to be clear, useful, and ready to grow." })} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ y: -8 }} viewport={{ once: true }} transition={{ duration: 0.45 }} className="group cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(12,18,25,0.95),rgba(8,11,17,0.9))] p-4 shadow-[0_20px_60px_rgba(0,0,0,0.2)] transition duration-300 hover:border-cyan-300/30">
+                {[
+                  { name: t.projects.project03, desc: t.projects.leviDesc, href: "https://levibot-nine.vercel.app/", image: "/8263689cdc32cef0e9b071fbd700e6ef.png", community: "https://discord.gg/6fv7vpUR7h", cta1: t.projects.view, cta2: t.projects.join },
+                  { name: t.projects.project04, desc: t.projects.vexraDesc, href: "https://vexragroup.netlify.app/", visual: "console", cta1: t.projects.view },
+                  { name: t.projects.project05, desc: t.projects.aeroDesc, href: "https://shahcaf.github.io/Aerogrowth/", image: "/de23298bfa67ec1092d4df3cec2c9bd1.png", community: "https://discord.gg/T8e8u28cZp", cta1: t.projects.view },
+                  { name: t.projects.project06, desc: t.projects.skodaDesc, href: "https://discord.gg/KBx7uBdPqn", image: "/skoda-team.jpg", community: "https://discord.gg/KBx7uBdPqn", cta1: t.projects.join, cta2: t.projects.join },
+                ].map((project) => (
+                  <motion.article key={project.name} onClick={() => setSelectedProject({ name: project.name, desc: project.desc, href: project.href, category: "personal", role: project.name.includes("LeviBot") ? "Lead Developer" : project.name.includes("AeroGrowth") ? "Founder & Product Builder" : "Co-Founder", stack: project.name.includes("LeviBot") ? "Discord · Automation · Web" : "Brand · Web · Community systems", outcome: "A focused product experience designed to be clear, useful, and ready to grow.", image: project.image, challenge: project.name.includes("צוות סקודה") ? "Build a community identity and member experience that gives the team a clear place to grow together." : "Connect a clear identity with a useful product experience people can return to.", tags: project.name.includes("LeviBot") ? ["Discord systems", "Automation", "Web app"] : project.name.includes("AeroGrowth") ? ["Community", "Founder", "Launch"] : ["Co-Founder", "Community", "Discord"] })} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} whileHover={{ y: -8 }} viewport={{ once: true }} transition={{ duration: 0.45 }} className="group cursor-pointer overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(12,18,25,0.95),rgba(8,11,17,0.9))] p-4 shadow-[0_20px_60px_rgba(0,0,0,0.2)] transition duration-300 hover:border-cyan-300/30">
                     <div className="rounded-[1.4rem] border border-white/10 bg-[linear-gradient(135deg,#0b1324,#111827_45%,#0a111b)] p-4">
                       <div className="mb-4 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white/40">
                         <span className="h-2.5 w-2.5 rounded-full bg-violet-400" />
@@ -1646,7 +1821,16 @@ export default function Home() {
                             </div>
                           </div>
                         ) : (
-                          <><Image src={project.image ?? "/window.svg"} alt={project.name} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover opacity-75 transition duration-700 group-hover:scale-110 group-hover:opacity-100" /><div className="absolute inset-0 bg-gradient-to-t from-[#070b13] via-transparent to-violet-300/10" /></>
+                          <>
+                            <div className="absolute inset-0 flex items-end bg-[radial-gradient(circle_at_70%_20%,rgba(52,211,153,0.26),transparent_28%),linear-gradient(135deg,#10231e,#07110f_58%,#050908)] p-5">
+                              <div>
+                                <div className="text-[10px] uppercase tracking-[0.24em] text-emerald-200/70">Co-Founder Community</div>
+                                <div className="mt-2 text-2xl font-black tracking-[-0.05em] text-white">צוות סקודה</div>
+                              </div>
+                            </div>
+                            <Image src={project.image ?? "/window.svg"} alt={project.name} fill sizes="(max-width: 1024px) 100vw, 50vw" onError={(event) => { event.currentTarget.style.display = "none"; }} className="object-cover opacity-75 transition duration-700 group-hover:scale-110 group-hover:opacity-100" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#070b13] via-transparent to-violet-300/10" />
+                          </>
                         )}
                       </div>
                     </div>
@@ -1682,7 +1866,7 @@ export default function Home() {
             </div>
             <p className="max-w-xs text-sm leading-6 text-white/45">Communities grow when product, identity, and people move in the same direction.</p>
           </div>
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-3">
             <motion.div whileHover={{ y: -8 }} className="group relative overflow-hidden rounded-[2rem] border border-cyan-300/15 bg-[linear-gradient(135deg,#0c1a2a,#071019)] p-6 shadow-[0_22px_65px_rgba(0,0,0,0.24)] sm:p-8">
               <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full border border-cyan-300/15 transition duration-700 group-hover:scale-125" />
               <div className="absolute right-8 top-8 h-24 w-24 rounded-full border border-cyan-300/20 transition duration-700 group-hover:rotate-45" />
@@ -1714,6 +1898,27 @@ export default function Home() {
               <div className="relative mt-5 h-1.5 overflow-hidden rounded-full bg-white/10"><motion.div initial={{ width: 0 }} whileInView={{ width: "88%" }} viewport={{ once: true }} transition={{ duration: 1 }} className="h-full rounded-full bg-violet-300" /></div>
               <a href="https://discord.gg/J5uc3p9vp" target="_blank" rel="noreferrer" className="relative mt-8 inline-flex items-center gap-2 rounded-full border border-violet-400/20 bg-violet-500/15 px-5 py-3 text-sm font-semibold text-violet-100 transition hover:-translate-y-1 hover:bg-violet-500/25">
                 {t.founders.join2}
+              </a>
+            </motion.div>
+
+            <motion.div whileHover={{ y: -8 }} className="group relative overflow-hidden rounded-[2rem] border border-emerald-300/15 bg-[linear-gradient(135deg,#0d1d1a,#091210)] p-6 shadow-[0_22px_65px_rgba(0,0,0,0.24)] sm:p-8">
+              <div className="absolute -right-16 -top-16 h-48 w-48 rounded-full border border-emerald-300/15 transition duration-700 group-hover:scale-125" />
+              <div className="relative mb-6 h-40 overflow-hidden rounded-2xl border border-emerald-300/20 bg-black/20">
+                <div className="absolute inset-0 flex items-end bg-[radial-gradient(circle_at_70%_20%,rgba(52,211,153,0.28),transparent_30%),linear-gradient(135deg,#10231e,#07110f)] p-4">
+                  <span className="text-2xl font-black tracking-[-0.05em] text-white">צוות סקודה</span>
+                </div>
+                <Image src="/skoda-team.jpg" alt="צוות סקודה community" fill sizes="(max-width: 1024px) 100vw, 33vw" onError={(event) => { event.currentTarget.style.display = "none"; }} className="object-cover transition duration-700 group-hover:scale-105" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#091210] via-transparent to-transparent" />
+              </div>
+              <div className="relative flex items-center justify-between"><p className="text-xs uppercase tracking-[0.26em] text-emerald-300">Co-Founder</p><span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.16em] text-emerald-200">Community</span></div>
+              <h3 className="relative mt-5 text-4xl font-black tracking-[-0.05em] text-white">{t.founders.skoda}</h3>
+              <div className="relative mt-8 flex items-end gap-3">
+                <motion.span initial={{ opacity: 0, scale: 0.85 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="text-6xl font-black tracking-[-0.06em] text-white">606</motion.span>
+                <span className="pb-2 text-white/60">{t.founders.members3}</span>
+              </div>
+              <div className="relative mt-5 h-1.5 overflow-hidden rounded-full bg-white/10"><motion.div initial={{ width: 0 }} whileInView={{ width: "72%" }} viewport={{ once: true }} transition={{ duration: 1 }} className="h-full rounded-full bg-emerald-300" /></div>
+              <a href="https://discord.gg/KBx7uBdPqn" target="_blank" rel="noreferrer" className="relative mt-8 inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/15 px-5 py-3 text-sm font-semibold text-emerald-100 transition hover:-translate-y-1 hover:bg-emerald-500/25">
+                {t.founders.join3}
               </a>
             </motion.div>
           </div>
@@ -1838,37 +2043,36 @@ export default function Home() {
         <section id="contact" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="max-w-5xl">
             <h3 className="text-[3.15rem] font-black leading-[0.82] tracking-[-0.075em] text-white sm:text-[5rem] lg:text-[7rem]">
-              Have an idea?
-              <span className="mt-1 block text-white/95">Let&apos;s build it.</span>
+              {t.contact.title}
             </h3>
           </div>
 
           <div className="mt-10 grid gap-4">
             {[
               {
-                label: "GitHub",
+                label: t.contact.github,
                 value: "github.com/shahcaf",
                 href: "https://github.com/shahcaf",
-                action: "Open GitHub",
+                action: t.contact.githubAction,
                 accent: "cyan",
               },
               {
                 label: "Phone",
                 value: "+972 055-688-4247",
                 href: "tel:+9720556884247",
-                action: "Call now",
+                action: t.contact.phoneAction,
                 accent: "sage",
               },
               {
-                label: "Discord",
+                label: t.contact.discord,
                 value: "@r4ze083",
                 href: "https://discord.com/users/447245727536775168",
-                action: "Open Discord",
+                action: t.contact.discordAction,
                 accent: "violet",
               },
             ].map((contact, index) => (
               <motion.div
-                key={contact.label}
+                key={`${contact.label}-${index}`}
                 initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
@@ -1942,6 +2146,22 @@ export default function Home() {
                 {t.contact.options.map((option) => <option key={option}>{option}</option>)}
               </select>
             </label>
+            <div className="mt-4 grid gap-4 sm:grid-cols-2">
+              <label className="grid gap-2 text-sm text-white/65">
+                <span>{featureCopy.budget}</span>
+                <select value={form.budget} onChange={(event) => handleFormChange("budget", event.target.value)} className="rounded-xl border border-white/10 bg-[#0b111a] px-4 py-3 text-white outline-none transition focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/10">
+                  <option value="">-</option>
+                  {featureCopy.budgetOptions.map((option) => <option key={option}>{option}</option>)}
+                </select>
+              </label>
+              <label className="grid gap-2 text-sm text-white/65">
+                <span>{featureCopy.deadline}</span>
+                <select value={form.deadline} onChange={(event) => handleFormChange("deadline", event.target.value)} className="rounded-xl border border-white/10 bg-[#0b111a] px-4 py-3 text-white outline-none transition focus:border-cyan-300/50 focus:ring-2 focus:ring-cyan-300/10">
+                  <option value="">-</option>
+                  {featureCopy.deadlineOptions.map((option) => <option key={option}>{option}</option>)}
+                </select>
+              </label>
+            </div>
             <label className="mt-4 grid gap-2 text-sm text-white/65">
               <span>{t.contact.formMessage}</span>
               <textarea
@@ -1956,7 +2176,7 @@ export default function Home() {
             </label>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div aria-live="polite" className={`text-sm ${submitted ? "text-emerald-300" : submissionError ? "text-rose-300" : "text-white/40"}`}>
-                {submitted ? t.contact.success : submissionError ? t.contact.error : "Replies go directly to Shahaf."}
+                {submitted ? t.contact.success : submissionError ? t.contact.error : t.contact.contactLine}
               </div>
               <button type="submit" disabled={submitting} className="inline-flex items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#070b13] transition hover:-translate-y-0.5 hover:bg-cyan-100 disabled:cursor-wait disabled:opacity-60">
                 <Send className="h-4 w-4" />
@@ -1970,9 +2190,16 @@ export default function Home() {
       <AnimatePresence>
         {selectedProject && (
           <motion.div className="fixed inset-0 z-[70] flex items-center justify-center bg-black/70 p-4 backdrop-blur-md" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelectedProject(null)}>
-            <motion.div role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" initial={{ opacity: 0, y: 18, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 18, scale: 0.96 }} onClick={(event) => event.stopPropagation()} className="w-full max-w-lg overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-[#0a101a] shadow-[0_30px_100px_rgba(0,0,0,0.55)]">
+            <motion.div role="dialog" aria-modal="true" aria-labelledby="project-dialog-title" initial={{ opacity: 0, y: 18, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} exit={{ opacity: 0, y: 18, scale: 0.96 }} onClick={(event) => event.stopPropagation()} className="w-full max-w-2xl overflow-hidden rounded-[2rem] border border-cyan-300/20 bg-[#0a101a] shadow-[0_30px_100px_rgba(0,0,0,0.55)]">
               <div className="flex items-center justify-between border-b border-white/10 px-5 py-4"><span className="text-xs uppercase tracking-[0.22em] text-cyan-300">{selectedProject.category === "client" ? t.projects.client : t.projects.personal}</span><button type="button" onClick={() => setSelectedProject(null)} aria-label="Close project details" className="rounded-full border border-white/10 p-2 text-white/60 transition hover:border-white/30 hover:text-white"><X className="h-4 w-4" /></button></div>
-              <div className="p-6 sm:p-8"><div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-cyan-200"><Code2 className="h-6 w-6" /></div><h2 id="project-dialog-title" className="text-3xl font-black tracking-[-0.05em] text-white">{selectedProject.name}</h2><p className="mt-4 leading-7 text-white/65">{selectedProject.desc}</p><div className="mt-6 grid gap-3 border-y border-white/10 py-5 text-sm"><div><div className="text-[10px] uppercase tracking-[0.18em] text-white/35">Role</div><div className="mt-1 text-white/80">{selectedProject.role || "Development"}</div></div><div><div className="text-[10px] uppercase tracking-[0.18em] text-white/35">Stack</div><div className="mt-1 text-white/80">{selectedProject.stack || "Web · Product"}</div></div><div><div className="text-[10px] uppercase tracking-[0.18em] text-white/35">Focus</div><div className="mt-1 text-white/80">{selectedProject.outcome || "A polished digital product."}</div></div></div><a href={selectedProject.href} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#070b13] transition hover:-translate-y-1">{t.projects.view}<ExternalLink className="h-4 w-4" /></a></div>
+              <div className="grid gap-0 md:grid-cols-[0.9fr_1.1fr]">
+                <div className="relative min-h-56 overflow-hidden border-b border-white/10 bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.22),transparent_42%),linear-gradient(145deg,#102238,#070b13)] md:min-h-full md:border-b-0 md:border-r">
+                  {selectedProject.image && <Image src={selectedProject.image} alt={selectedProject.name} fill sizes="(max-width: 768px) 100vw, 40vw" className="object-cover opacity-80" />}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070b13] via-transparent to-cyan-300/10" />
+                  <div className="absolute bottom-5 left-5 right-5"><div className="text-[10px] uppercase tracking-[0.24em] text-cyan-200/75">Case study</div><div className="mt-2 text-2xl font-black tracking-[-0.05em] text-white">{selectedProject.name}</div></div>
+                </div>
+                <div className="p-6 sm:p-8"><div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-cyan-300/25 bg-cyan-300/10 text-cyan-200"><Code2 className="h-5 w-5" /></div><h2 id="project-dialog-title" className="mt-5 text-3xl font-black tracking-[-0.05em] text-white">{selectedProject.name}</h2><p className="mt-4 leading-7 text-white/65">{selectedProject.desc}</p><div className="mt-5 flex flex-wrap gap-2">{(selectedProject.tags || []).map((tag) => <span key={tag} className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs text-cyan-100">{tag}</span>)}</div><div className="mt-6 space-y-4 border-y border-white/10 py-5 text-sm"><div><div className="text-[10px] uppercase tracking-[0.18em] text-white/35">Challenge</div><div className="mt-1 leading-6 text-white/80">{selectedProject.challenge}</div></div><div><div className="text-[10px] uppercase tracking-[0.18em] text-white/35">Role / stack</div><div className="mt-1 text-white/80">{selectedProject.role || "Development"} · {selectedProject.stack || "Web · Product"}</div></div><div><div className="text-[10px] uppercase tracking-[0.18em] text-white/35">Outcome</div><div className="mt-1 leading-6 text-white/80">{selectedProject.outcome || "A polished digital product."}</div></div></div><a href={selectedProject.href} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-semibold text-[#070b13] transition hover:-translate-y-1">{t.projects.view}<ExternalLink className="h-4 w-4" /></a></div>
+              </div>
             </motion.div>
           </motion.div>
         )}
