@@ -1,12 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    turbo: {
-      resolveAlias: {}
-    }
-  },
-  staticPageGenerationTimeout: 60,
+  /* config options here */
 };
 
 export default nextConfig;
