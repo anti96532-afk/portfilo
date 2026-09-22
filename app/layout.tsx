@@ -52,6 +52,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <head>
+        <meta
+          name="google-site-verification"
+          content="sVGevsvKctYo7M-XNJrk1OsSU6X-fxAHHINA57hwK-o"
+        />
+      </head>
       <body className="min-h-full bg-[#05070b] text-white">
         <noscript>
           <iframe
